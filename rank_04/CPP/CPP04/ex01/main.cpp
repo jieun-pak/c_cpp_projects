@@ -4,6 +4,9 @@
 
 int main() {
 	std::cout << "=== Subject Test: Delete as Animal ===" << std::endl;
+	const Animal obj;
+	const Animal* thisAlsoFails = new Animal();
+	(void)thisAlsoFails;
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	delete j;

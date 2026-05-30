@@ -1,0 +1,267 @@
+아래는 제공해주신 **CPP Module 04 평가 스케일 문서**를 깔끔하게 정리한 **Markdown 버전**입니다.
+(원문 내용은 유지하고, 링크/체크리스트/구조만 Markdown에 맞게 정리했습니다)
+
+---
+
+# SCALE FOR PROJECT
+
+## CPP MODULE 04
+
+[https://projects.intra.42.fr/projects/cpp-module-04](https://projects.intra.42.fr/projects/cpp-module-04)
+
+> You should evaluate **1 student** in this team
+
+---
+
+## Git Repository
+
+---
+
+## Introduction
+
+Please comply with the following rules:
+
+* Remain polite, courteous, respectful and constructive throughout the evaluation process.
+  The well-being of the community depends on it.
+
+* Identify with the student or group whose work is evaluated the possible dysfunctions in their project.
+  Take the time to discuss and debate the problems that may have been identified.
+
+* You must consider that there might be differences in how peers understood the instructions and scope.
+  Always keep an open mind and grade honestly.
+
+> Pedagogy is useful **only if peer-evaluation is done seriously**.
+
+---
+
+## Guidelines
+
+* Only grade the work that was turned in the **Git repository**.
+* Double-check that the repository belongs to the correct student(s).
+* Ensure `git clone` is used in an empty folder.
+* Check carefully that no malicious aliases were used.
+* Review any scripts used for testing or automation.
+* If you haven’t completed the assignment yourself, **read the entire subject first**.
+* Use available flags to report:
+
+  * Empty repository
+  * Non-functioning program
+  * Norm error
+  * Cheating, etc.
+
+> In these cases, the evaluation ends and the final grade is **0**
+> (**-42 in case of cheating**).
+
+* Never edit any file except configuration files (and only with agreement).
+* Verify **absence of memory leaks**.
+
+  * Tools allowed: `leaks`, `valgrind`, `e_fence`
+
+---
+
+## Attachments
+
+* 📎 [subject.pdf](https://cdn.intra.42.fr/pdf/pdf/40217/en.subject.pdf)
+
+---
+
+## Preliminary Tests
+
+If cheating is suspected:
+
+* Stop evaluation immediately
+* Use the **Cheat** flag
+* Decide calmly and wisely
+
+---
+
+## Prerequisites
+
+* Code must compile with:
+
+  ```bash
+  c++ -Wall -Wextra -Werror
+  ```
+* Must follow **C++98 standard**
+* C++11 or later features are **not allowed**
+
+### Do **NOT** grade if:
+
+* A function is implemented in a header file (except templates)
+* Makefile does not use required flags or compiler
+
+### Flag **Forbidden Function** if:
+
+* Use of C functions (`malloc`, `printf`, `free`, etc.)
+* Unauthorized functions
+* `using namespace`
+* `friend` keyword
+* External libraries or non-C++98 features
+
+---
+
+## Ex00: Polymorphism
+
+### Requirements
+
+* A `main` function with sufficient tests
+  → **No main = no grade**
+* All non-interface classes must follow **orthodox canonical form**
+
+### Animal Class
+
+* Attribute:
+
+  * `std::string type`
+* Must be instantiable and usable
+
+### Inheritance
+
+* Classes inheriting from `Animal`:
+
+  * `Cat`
+  * `Dog`
+* Constructor & destructor outputs must be clear
+* Student should explain constructor/destructor order
+
+### Polymorphism
+
+* `makeSound()` must be **virtual**
+
+  ```cpp
+  virtual void makeSound() const;
+  ```
+* Correct method must be called via base pointer/reference
+
+### WrongAnimal Test
+
+* `WrongAnimal` and `WrongCat` **without virtual**
+* `WrongCat` should only call its own `makeSound()` when used directly
+
+---
+
+## Ex01: I Do Not Want to Set the World on Fire
+
+### Concrete Animal
+
+* New class: `Brain`
+* `Cat` and `Dog` contain a **private Brain**
+* `Brain` must **NOT** be inside `Animal`
+* `Brain` has output on creation & destruction
+
+### Deep Copy
+
+* Copy must be **deep**
+
+* Example test:
+
+  ```cpp
+  Dog basic;
+  {
+      Dog tmp = basic;
+  }
+  ```
+
+* Shallow copy causes double delete → ❌
+
+* Copy constructor must also perform deep copy
+
+* Proper canonical form is mandatory
+
+### Destruction Chaining
+
+* Destructors must be **virtual**
+* Student must explain what happens without `virtual`
+
+---
+
+## Ex02: Abstract Class
+
+### Abstract Animal
+
+* `Animal::makeSound` is **pure virtual**
+
+  ```cpp
+  virtual void makeSound() const = 0;
+  ```
+* Must NOT be instantiable
+
+  ```cpp
+  Animal test; // compilation error expected
+  ```
+
+### Concrete Animals
+
+* `Cat` and `Dog` still exist
+* Behavior identical to previous exercises
+
+---
+
+## Ex03: Interface and Recap
+
+### Interfaces
+
+* `ICharacter`
+* `IMateriaSource`
+* Must match subject exactly
+
+### MateriaSource
+
+* Implements `IMateriaSource`
+* Member functions behave correctly
+
+### Concrete Materia
+
+* `Ice` and `Cure` inherit from `AMateria`
+* `clone()` implemented correctly
+* Correct output messages
+
+### AMateria
+
+* Abstract class
+* `clone()` is pure virtual
+* Virtual destructor present
+
+  ```cpp
+  virtual ~AMateria();
+  ```
+* Protected `std::string type`
+
+### Character
+
+* Implements `ICharacter`
+* Inventory of **max 4 Materias**
+* Member functions follow subject
+* Copy & assignment are **deep copy**
+
+---
+
+## Ratings & Flags
+
+* 🌟 Outstanding project
+* 🚫 Empty work
+* 🧑‍💻 No author file
+* ❌ Invalid compilation
+* 📐 Norme
+* 🧨 Crash
+* 💧 Leaks
+* ⛔ Forbidden function
+* 🚨 Cheat
+
+---
+
+## Conclusion
+
+* Leave a **constructive comment** on the evaluation
+
+---
+
+## Legal & Privacy
+
+* Privacy Policy
+  [https://signin.intra.42.fr/legal/terms/5](https://signin.intra.42.fr/legal/terms/5)
+* Terms of Use
+  [https://signin.intra.42.fr/legal/terms/6](https://signin.intra.42.fr/legal/terms/6)
+* Rules of Procedure
+  [https://signin.intra.42.fr/legal/terms/4](https://signin.intra.42.fr/legal/terms/4)
+
