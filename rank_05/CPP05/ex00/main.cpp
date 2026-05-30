@@ -2,10 +2,10 @@
 
 int main()
 {
-	// Valid bureaucrat
+	std::cout << "\n===========[Part 1: Valid bureaucrat]===========" << std::endl;
 	try
 	{
-		Bureaucrat b("Alice", 1);
+		Bureaucrat b("Jinny", 1);
 		std::cout << b << std::endl;
 		b.decrementGrade();
 		std::cout << b << std::endl;
@@ -17,10 +17,10 @@ int main()
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	// Grade too high (0)
+	std::cout << "\n===========[Part 2: Grade too high (0)]===========" << std::endl;
 	try
 	{
-		Bureaucrat b("Bob", 0);
+		Bureaucrat b("Habib", 0);
 		std::cout << b << std::endl;
 	}
 	catch (std::exception &e)
@@ -28,10 +28,10 @@ int main()
 		std::cout << "Exception (grade 0): " << e.what() << std::endl;
 	}
 
-	// Grade too low (151)
+	std::cout << "\n===========[Part 3: Grade too low (151)]===========" << std::endl;
 	try
 	{
-		Bureaucrat b("Carol", 151);
+		Bureaucrat b("Min", 151);
 		std::cout << b << std::endl;
 	}
 	catch (std::exception &e)
@@ -39,7 +39,7 @@ int main()
 		std::cout << "Exception (grade 151): " << e.what() << std::endl;
 	}
 
-	// Increment past highest grade
+	std::cout << "\n===========[Part 4: Increment past highest grade]===========" << std::endl;
 	try
 	{
 		Bureaucrat b("Dave", 1);
@@ -51,7 +51,7 @@ int main()
 		std::cout << "Exception (increment from 1): " << e.what() << std::endl;
 	}
 
-	// Decrement past lowest grade
+	std::cout << "\n===========[Part 5: Decrement past lowest grade]===========" << std::endl;
 	try
 	{
 		Bureaucrat b("Eve", 150);
